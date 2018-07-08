@@ -18,7 +18,7 @@ def main():
     ec2_client = boto3.client('ec2')
     ecs_client = boto3.client('ecs')
     
-    pass
+    deploy_dxlbroker(ecs_client)
 
 
 def deploy_dxlbroker(client):
@@ -49,26 +49,12 @@ def deploy_dxlbroker(client):
 				
 			},
 		],
-		volumes=[
-			{
-				'name': 'string',
-				'host': {
-					'sourcePath': 'string'
-				}
-			},
-		],
-		placementConstraints=[
-			{
-				'type': 'memberOf',
-				'expression': 'string'
-			},
-		],
 		requiresCompatibilities=[
-			'EC2'|'FARGATE',
-		],
-		cpu='string',
-		memory='string'
+			'FARGATE',
+		]
 	)
+	##
+	print client.list_task_definitions()
     
 
 if __name__ == '__main__':
