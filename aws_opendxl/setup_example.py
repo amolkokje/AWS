@@ -26,6 +26,7 @@ def launch_ecs_example():
     # !/bin/bash
     # echo ECS_CLUSTER=your_cluster_name >> /etc/ecs/ecs.config
 
+    print '#############################################################################'
     response = ec2_client.run_instances(
         # Use the official ECS image
         ImageId="ami-a98cb2c3",
@@ -40,6 +41,7 @@ def launch_ecs_example():
     pprint.pprint(response)
 
     # Create a task definition
+    print '#############################################################################'
     response = ecs_client.register_task_definition(
         containerDefinitions=[
         {
@@ -81,6 +83,7 @@ def launch_ecs_example():
     # (the "desired count") of instances of a task definition
     # simultaneously in an ECS cluster.
 
+    print '#############################################################################'
     response = ecs_client.create_service(
         cluster=cluster_name,
         serviceName=service_name,
