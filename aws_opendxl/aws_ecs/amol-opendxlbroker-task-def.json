@@ -1,0 +1,27 @@
+{
+    "family": "amol-opendxlbroker-task-def", 
+    "networkMode": "awsvpc", 
+    "containerDefinitions": [
+        {
+            "name": "amol-opendxl-broker", 
+            "image": "opendxl/opendxl-broker", 
+            "portMappings": [
+                {
+                    "containerPort": 80, 
+                    "hostPort": 80, 
+                    "protocol": "tcp"
+                }
+            ], 
+            "essential": true, 
+            "entryPoint": [
+                "sh",
+		"-c"
+            ]
+        }
+    ], 
+    "requiresCompatibilities": [
+        "FARGATE"
+    ], 
+    "cpu": "256", 
+    "memory": "512"
+}
